@@ -65,7 +65,7 @@ st.markdown(''' <a target="_self" href="#interview-prep">
                 </a>''', unsafe_allow_html=True)
                 
 
-    html('''
+html('''
 <script>window.top.document.querySelectorAll(`[href*="streamlit.io"]`).forEach(e => e.setAttribute("style", "display: none;"));
       </script>
     ''')
