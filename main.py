@@ -2,6 +2,7 @@ import streamlit as st
 import json
 import os
 import streamlit.components.v1 as components
+from streamlit.components.v1 import html
 
 # Set up the page
 st.set_page_config(
@@ -62,3 +63,9 @@ st.markdown(''' <a target="_self" href="#interview-prep">
                         Back to Top
                     </button>
                 </a>''', unsafe_allow_html=True)
+                
+
+    html('''
+<script>window.top.document.querySelectorAll(`[href*="streamlit.io"]`).forEach(e => e.setAttribute("style", "display: none;"));
+      </script>
+    ''')
