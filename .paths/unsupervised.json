@@ -1,0 +1,33 @@
+{
+  "topic": "Unsupervised Models",
+  "path": {
+    "Latent Semantic Analysis": "ML-Unsupervised-Models/LatentSemanticAnalysis.md",
+    "OPTICS": "ML-Unsupervised-Models/OPTICS.md",
+    "Truncated SVD": "ML-Unsupervised-Models/TruncatedSVD.md",
+    "BIRCH": "ML-Unsupervised-Models/BIRCH.md",
+    "Mini-Batch K-Means": "ML-Unsupervised-Models/Mini-BatchK-Means.md",
+    "Agglomerative Clustering": "ML-Unsupervised-Models/AgglomerativeClustering.md",
+    "Locally Linear Embedding": "ML-Unsupervised-Models/LocallyLinearEmbedding.md",
+    "ECLAT Algorithm": "ML-Unsupervised-Models/ECLATAlgorithm.md",
+    "DBSCAN": "ML-Unsupervised-Models/DBSCAN.md",
+    "FP-Growth Algorithm": "ML-Unsupervised-Models/FP-GrowthAlgorithm.md",
+    "Autoencoders": "ML-Unsupervised-Models/Autoencoders.md",
+    "Apriori Algorithm": "ML-Unsupervised-Models/AprioriAlgorithm.md",
+    "UMAP": "ML-Unsupervised-Models/UMAP.md",
+    "Multidimensional Scaling": "ML-Unsupervised-Models/MultidimensionalScaling.md",
+    "Non-Negative Matrix Factorization": "ML-Unsupervised-Models/Non-NegativeMatrixFactorization.md",
+    "HDBSCAN": "ML-Unsupervised-Models/HDBSCAN.md",
+    "Singular Value Decomposition": "ML-Unsupervised-Models/SingularValueDecomposition.md",
+    "K-Means": "ML-Unsupervised-Models/K-Means.md",
+    "Bayesian Gaussian Mixture Models": "ML-Unsupervised-Models/BayesianGaussianMixtureModels.md",
+    "Kernel PCA": "ML-Unsupervised-Models/KernelPCA.md",
+    "Independent Component Analysis": "ML-Unsupervised-Models/IndependentComponentAnalysis.md",
+    "t-SNE": "ML-Unsupervised-Models/t-SNE.md",
+    "Isomap": "ML-Unsupervised-Models/Isomap.md",
+    "Factor Analysis": "ML-Unsupervised-Models/FactorAnalysis.md",
+    "Principal Component Analysis": "ML-Unsupervised-Models/PrincipalComponentAnalysis.md",
+    "Divisive Clustering": "ML-Unsupervised-Models/DivisiveClustering.md",
+    "K-Medoids": "ML-Unsupervised-Models/K-Medoids.md",
+    "Gaussian Mixture Models": "ML-Unsupervised-Models/GaussianMixtureModels.md"
+  }
+}
