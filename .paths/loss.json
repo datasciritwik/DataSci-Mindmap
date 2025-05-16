@@ -1,0 +1,13 @@
+{
+    "topic": "Loss Function",
+    "path": {
+        "Object Detection Losses": "LossFunctions/ObjectDetectionLosses.md",
+        "GAN & Generative Model Losses": "LossFunctions/GAN&GenerativeModelLosses.md",
+        "Contrastive & Self-Supervised Losses": "LossFunctions/Contrastive&Self-SupervisedLosses.md",
+        "Regression Loss Functions": "LossFunctions/RegressionLossFunctions.md",
+        "Segmentation & Pixel-wise Losses": "LossFunctions/SegmentationnPixel-wiseLosses.md",
+        "Reinforcement Learning Losses": "LossFunctions/ReinforcementLearningLosses.md",
+        "Ranking & Learning-to-Rank Losses": "LossFunctions/RankingnLearning-to-RankLosses.md",
+        "Classification Loss Functions": "LossFunctions/ClassificationLossFunctions.md"
+    }
+}
