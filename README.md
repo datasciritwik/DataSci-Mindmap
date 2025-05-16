@@ -2,6 +2,12 @@
 
 A comprehensive Data Science Mindmap for quick revision.
 
+### 🚀 Deployment
+
+[![Streamlit App](https://img.shields.io/badge/Streamlit-Live%20App-brightgreen?logo=streamlit)](https://aimlnotes.streamlit.app/)
+
+🔗 **[Click here to open the AIML Notes App](https://aimlnotes.streamlit.app/)**
+
 ## Table of Contents
 - [Code Examples](#code-examples)
 - [Detailed Discussion](#detailed-discussion)
