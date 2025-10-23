@@ -77,7 +77,7 @@ if os.path.exists(file_path):
                 tts = gTTS(text=text, lang='en', slow=False)
 
                 # Save temporarily
-                output_path = f"{int(time.time())}.mp3"
+                output_path = f"{int(time.time())}.mpeg"
                 tts.save(output_path)
                 # Create base64 for direct embedding
                 with open(output_path, "rb") as f:
@@ -86,11 +86,17 @@ if os.path.exists(file_path):
 
                 # Audio player
                 st.audio(audio_bytes, format="audio/mp3")
+                st.audio(audio_bytes, format="audio/mpeg")
             # Fallback download link for iPhone users
             st.markdown(
                 f'<a href="data:audio/mp3;base64,{b64}" download="speech.mp3">📥 Download / Play Audio (iPhone Friendly)</a>',
                 unsafe_allow_html=True
             )
+            st.markdown(
+                f'<a href="data:audio/mpeg;base64,{b64}" download="speech.mpeg">📥 Download / Play Audio (iPhone Friendly)</a>',
+                unsafe_allow_html=True
+            )
+            
 
         else:
             st.warning("No content to read.")
