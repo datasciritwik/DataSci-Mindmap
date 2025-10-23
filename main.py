@@ -30,9 +30,11 @@ loss_data = load_json('.paths/loss.json')
 regression_data = load_json('.paths/regression.json')
 classification_data = load_json(".paths/classification.json")
 unsupervised_data = load_json(".paths/unsupervised.json")
+agents = load_json(".paths/agents.json")
 
 # Combine into one main topic dictionary
 topics_dict = {
+    agents['topic']:agents['path'],
     classification_data['topic']: classification_data['path'],
     regression_data['topic']: regression_data['path'],
     unsupervised_data['topic']: unsupervised_data['path'],

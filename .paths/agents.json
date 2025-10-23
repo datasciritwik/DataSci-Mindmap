@@ -1,0 +1,17 @@
+{
+    "topic": "Agent Creation",
+    "path": {
+        "Diagnostic and Goals":"agents/Diagnostic and goals.md",
+        "Core Architecture":"agents/Core architecture.md",
+        "LangGraph Integration":"agents/Langgraph interation.md",
+        "Model Choices": "agents/model choices.md",
+        "Data & Retrival":"agents/Data retrival.md",
+        "Safety & Guardrails":"agents/safety and guardrails.md",
+        "Infra & Orchestration":"agents/infra and orchestration.md",
+        "Testing & Eval":"agents/test and eval.md",
+        "Deploynment & CI/CD":"agents/deploynment.md",
+        "Observability & ops":"agents/observation.md",
+        "Cost, compliance & monitoring":"agents/cost.md",
+        "UX, Monitoring & Iteration":"agents/ux.md"
+    }
+}
