@@ -68,8 +68,8 @@ if os.path.exists(file_path):
         #else:
             #st.warning("No content to read.")
     if st.button("🔊 Listen"):
-    text = st.session_state.tts_text.replace("'", "\\'")
-    components.html(f"""
+        text = st.session_state.tts_text.replace("'", "\\'")
+        components.html(f"""
         <script>
             const msg = new SpeechSynthesisUtterance('{text}');
             msg.rate = 1;
