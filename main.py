@@ -1,4 +1,4 @@
-ko import streamlit as st
+import streamlit as st
 import json
 import os
 import streamlit.components.v1 as components
