@@ -1,4 +1,1 @@
 streamlit
-streamlit-TTS
-pyaudioop
-audioop
