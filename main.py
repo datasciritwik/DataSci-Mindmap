@@ -1,4 +1,4 @@
-import streamlit as st
+ko import streamlit as st
 import json
 import os
 import streamlit.components.v1 as components
@@ -80,7 +80,7 @@ if os.path.exists(file_path):
 
 else:
     st.error(f"⚠️ File not found: `{file_path}`")
-i
+
 # As an html button (needs styling added)
 st.markdown(''' <a target="_self" href="#interview-prep">
                     <button>
