@@ -3,7 +3,7 @@ import json
 import os
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
-import streamlit_tts as stt  # 🔊 Added for TTS
+#import streamlit_tts as stt  # 🔊 Added for TTS
 
 # Set up the page
 st.set_page_config(
@@ -62,15 +62,25 @@ if os.path.exists(file_path):
     st.session_state.tts_text = content
 
     # 🎧 Listen button
+    #if st.button("🔊 Listen"):
+        #if st.session_state.tts_text.strip():
+            #stt.tts(st.session_state.tts_text)
+        #else:
+            #st.warning("No content to read.")
     if st.button("🔊 Listen"):
-        if st.session_state.tts_text.strip():
-            stt.tts(st.session_state.tts_text)
-        else:
-            st.warning("No content to read.")
+    text = st.session_state.tts_text.replace("'", "\\'")
+    components.html(f"""
+        <script>
+            const msg = new SpeechSynthesisUtterance('{text}');
+            msg.rate = 1;
+            window.speechSynthesis.speak(msg);
+        </script>
+    """, height=0)
+    
 
 else:
     st.error(f"⚠️ File not found: `{file_path}`")
-
+i
 # As an html button (needs styling added)
 st.markdown(''' <a target="_self" href="#interview-prep">
                     <button>
