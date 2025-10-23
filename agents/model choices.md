@@ -1,0 +1,28 @@
+### 4. Model Choices
+
+Selecting the right set of models is a critical decision that profoundly impacts an agent's performance, cost, speed, and overall capabilities. This is not a single choice but a strategic combination of different types of models, each serving a specific purpose within the agent's architecture. The goal is to create a balanced and optimized system that leverages the strengths of various models to achieve the desired outcome.
+
+**Expanded Step-by-Step Guide:**
+
+*   **LLM vs. Hybrid (Local + Server)**: This choice addresses the core reasoning engine of the agent.
+    *   **Server-Based LLMs**: Large, powerful models like GPT-4, Claude 3.5, and Gemini 2.5 Pro are hosted by providers and accessed via APIs. They offer state-of-the-art reasoning, extensive world knowledge, and strong performance on a wide range of general tasks. They are the best choice for complex, open-ended reasoning and when the highest possible quality is the primary concern.
+    *   **Local Models**: Smaller, open-source models (e.g., from providers like Mistral, or run via frameworks like Ollama) can be hosted on your own infrastructure or even on-device. These models offer significant advantages in terms of privacy, as data does not leave your environment. They also provide lower latency and can be more cost-effective for high-volume, simpler tasks.
+    *   **Hybrid Approach**: The most effective strategy often involves a hybrid model. You can use a smaller, local model as a "router" or for initial processing, and then escalate to a more powerful server-based model only when necessary for complex reasoning. This tiered approach allows you to optimize for cost and speed without sacrificing quality on the tasks that need it most. For example, a local model could handle simple classification or data extraction, while a server-based model is used for generating a detailed analytical report.
+
+*   **Embeddings**: Embedding models are the foundation of an agent's ability to understand and search through information. They convert text and other data into numerical vector representations, where semantically similar items are closer together.
+    *   **Model Selection**: While models like OpenAI's `text-embedding-ada-02` were foundational, the landscape has evolved. Current state-of-the-art models from providers like Google (Gemini), Voyage AI, and Cohere, as well as high-performing open-source options, offer improved performance and efficiency. Key trends in 2025 include a push for strong multilingual support and models specialized for specific domains like finance or medicine.
+    *   **Key Considerations**: When choosing an embedding model, consider factors like the dimensionality of the vectors (which impacts storage and computational cost), its performance on relevant benchmarks (like MTEB), and whether it's instruction-tuned, which allows it to adapt to different tasks more effectively.
+
+*   **Retrieval**: Retrieval-Augmented Generation (RAG) is a crucial technique for making agents more knowledgeable and reducing the likelihood of hallucinations. Instead of relying solely on the LLM's internal knowledge, RAG systems first retrieve relevant information from an external knowledge source and provide it to the LLM as context.
+    *   **Basic RAG**: The standard RAG pipeline involves ingesting and chunking documents, creating embeddings, and retrieving the most relevant chunks to augment the prompt.
+    *   **Advanced RAG**: To build production-ready systems, advanced RAG techniques are essential. These include:
+        *   **Hybrid Search**: Combining traditional keyword-based search with semantic vector search to get the best of both worlds.
+        *   **Re-ranking**: Using a secondary, more sophisticated model to re-rank the initial set of retrieved documents for relevance.
+        *   **Query Transformation**: Rewriting the user's query to be more optimal for retrieval.
+        *   **GraphRAG**: Using knowledge graphs to understand and retrieve information based on the relationships between entities, enabling more complex, multi-hop reasoning.
+
+*   **Fine-Tuning vs. Prompting**: This is a fundamental decision about how to adapt a model's behavior to your specific needs. The choice depends on whether you are trying to solve a "knowledge gap" or a "behavior gap".
+    *   **Prompting**: This is the process of carefully designing the instructions and examples you provide to the model in its context window. It's fast, inexpensive, and highly flexible. Advanced prompting techniques like Chain-of-Thought or providing few-shot examples can significantly improve a model's performance on tasks where it already has the underlying knowledge but needs better guidance on how to behave (e.g., adhering to a specific output format or tone). Prompting is almost always the best place to start.
+    *   **Fine-Tuning**: This involves further training a pre-trained model on a dataset specific to your domain or task. Fine-tuning is appropriate when you need to teach the model new, specialized knowledge that isn't in its original training data, or when you need it to consistently adhere to a very specific style or format that is difficult to achieve with prompting alone. While powerful, fine-tuning is more expensive, time-consuming, and requires a high-quality dataset.
+
+By carefully evaluating these different model choices and how they interact, you can assemble an AI agent that is not only intelligent and capable but also efficient, cost-effective, and tailored to the specific demands of your use case.
