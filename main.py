@@ -3,7 +3,7 @@ import json
 import os
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
-import streamlit_tts as stt  # 🔊 Added for TTS
+from streamlit_TTS import auto_play, text_to_speech, text_to_audio  # 🔊 Added for TTS
 
 # Set up the page
 st.set_page_config(
@@ -64,7 +64,10 @@ if os.path.exists(file_path):
     # 🎧 Listen button
     if st.button("🔊 Listen"):
         if st.session_state.tts_text.strip():
-            stt.tts(st.session_state.tts_text)
+            # stt.tts(st.session_state.tts_text)
+            audio=text_to_audio(st.session_state.tts_text,language='en')
+#then play it
+            auto_play(audio)
         else:
             st.warning("No content to read.")
     # if st.button("🔊 Listen"):
