@@ -5,6 +5,8 @@ from gtts import gTTS
 import tempfile
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
+import time 
+import base64
 
 # Set up the page
 st.set_page_config(
@@ -75,12 +77,19 @@ if os.path.exists(file_path):
                 tts = gTTS(text=text, lang='en', slow=False)
 
                 # Save temporarily
-                with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
-                    tts.save(tmp.name)
-                    temp_audio_path = tmp.name
+                output_path = f"{int(time.time())}.mp3"
+                # Create base64 for direct embedding
+                with open(output_path, "rb") as f:
+                    audio_bytes = f.read()
+                b64 = base64.b64encode(audio_bytes).decode()
 
-            st.success("✅ Audio ready!")
-            st.audio(temp_audio_path, format="audio/mp3")
+                # Audio player
+                st.audio(audio_bytes, format="audio/mp3")
+            # Fallback download link for iPhone users
+            st.markdown(
+                f'<a href="data:audio/mp3;base64,{b64}" download="speech.mp3">📥 Download / Play Audio (iPhone Friendly)</a>',
+                unsafe_allow_html=True
+            )
 
         else:
             st.warning("No content to read.")
