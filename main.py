@@ -3,6 +3,7 @@ import json
 import os
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
+import streamlit_tts as stt  # 🔊 Added for TTS
 
 # Set up the page
 st.set_page_config(
@@ -13,6 +14,10 @@ st.set_page_config(
 )
 
 st.markdown('## Interview Prep')
+
+# Initialize session state for TTS
+if "tts_text" not in st.session_state:
+    st.session_state.tts_text = ""
 
 # Load JSON data
 def load_json(file_path):
@@ -36,7 +41,6 @@ topics_dict = {
 # List of topics (e.g., "Loss Function", "Regression Models")
 all_topics = list(topics_dict.keys())
 
-
 # Streamlit UI
 with st.container(border=True):
     c1, c2 = st.columns(2)
@@ -53,9 +57,19 @@ if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
     st.markdown(content, unsafe_allow_html=True)
+
+    # Save content for TTS
+    st.session_state.tts_text = content
+
+    # 🎧 Listen button
+    if st.button("🔊 Listen"):
+        if st.session_state.tts_text.strip():
+            stt.tts(st.session_state.tts_text)
+        else:
+            st.warning("No content to read.")
+
 else:
     st.error(f"⚠️ File not found: `{file_path}`")
-
 
 # As an html button (needs styling added)
 st.markdown(''' <a target="_self" href="#interview-prep">
