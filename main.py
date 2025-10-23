@@ -1,6 +1,6 @@
 import streamlit as st
 import json
-import os
+import os, re
 from gtts import gTTS
 import tempfile
 import streamlit.components.v1 as components
@@ -65,6 +65,11 @@ if os.path.exists(file_path):
         if text:
             with st.spinner("Generating audio..."):
                 # Generate TTS
+                # 2. Remove markdown symbols (*, _, #, >, `, etc.)
+                text = re.sub(r'[*_#>\-`~\[\](){}>]+', ' ', text)
+
+                # 3. Remove extra whitespace/newlines
+                text = re.sub(r'\s+', ' ', text).strip()
                 tts = gTTS(text=text, lang='en', slow=False)
 
                 # Save temporarily
