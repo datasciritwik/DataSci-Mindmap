@@ -1,6 +1,9 @@
 import streamlit as st
 import json
 import os
+from gtts import gTTS
+import tempfile
+import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 
 # Set up the page
@@ -13,7 +16,7 @@ st.set_page_config(
 
 st.markdown('## Interview Prep')
 
-# Initialize session state
+# Initialize session state for TTS
 if "tts_text" not in st.session_state:
     st.session_state.tts_text = ""
 
@@ -28,7 +31,7 @@ regression_data = load_json('.paths/regression.json')
 classification_data = load_json(".paths/classification.json")
 unsupervised_data = load_json(".paths/unsupervised.json")
 
-# Combine them into one main topic dictionary
+# Combine into one main topic dictionary
 topics_dict = {
     classification_data['topic']: classification_data['path'],
     regression_data['topic']: regression_data['path'],
@@ -53,37 +56,42 @@ if os.path.exists(file_path):
     with open(file_path, 'r') as f:
         content = f.read()
     st.markdown(content, unsafe_allow_html=True)
-
     st.session_state.tts_text = content
 
-    # 🔊 Browser-based TTS
+    # 🎧 Listen button
     if st.button("🔊 Listen"):
-        text = st.session_state.tts_text.replace("'", "\\'").replace("\n", " ")
-        html(f"""
-        <script>
-            const synth = window.speechSynthesis;
-            const utter = new SpeechSynthesisUtterance('{text}');
-            utter.rate = 1.0;
-            utter.pitch = 1.0;
-            utter.lang = 'en-US';
-            synth.cancel();  // stop any ongoing speech
-            synth.speak(utter);
-        </script>
-        """, height=0)
+        text = st.session_state.tts_text.strip()
+
+        if text:
+            with st.spinner("Generating audio..."):
+                # Generate TTS
+                tts = gTTS(text=text, lang='en', slow=False)
+
+                # Save temporarily
+                with tempfile.NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
+                    tts.save(tmp.name)
+                    temp_audio_path = tmp.name
+
+            st.success("✅ Audio ready!")
+            st.audio(temp_audio_path, format="audio/mp3")
+
+        else:
+            st.warning("No content to read.")
 else:
     st.error(f"⚠️ File not found: `{file_path}`")
 
-# Back to top button
+# Back to Top button
 st.markdown(''' 
 <a target="_self" href="#interview-prep">
-    <button>Back to Top</button>
+    <button>
+        Back to Top
+    </button>
 </a>
 ''', unsafe_allow_html=True)
 
-# Hide Streamlit branding
+# Hide Streamlit footer
 html('''
 <script>
-window.top.document.querySelectorAll(`[href*="streamlit.io"]`)
-    .forEach(e => e.setAttribute("style", "display: none;"));
+window.top.document.querySelectorAll(`[href*="streamlit.io"]`).forEach(e => e.setAttribute("style", "display: none;"));
 </script>
 ''')
