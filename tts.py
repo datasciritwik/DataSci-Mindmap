@@ -1,3 +1,5 @@
+import sys, audioop
+sys.modules["pyaudioop"] = audioop
 from gtts import gTTS
 import time
 from pydub import AudioSegment
