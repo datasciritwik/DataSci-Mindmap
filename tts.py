@@ -8,8 +8,11 @@ import time
 import imageio_ffmpeg as ffmpeg
 from pydub import AudioSegment
 
-AudioSegment.converter = ffmpeg.get_ffmpeg_exe()
-AudioSegment.ffprobe = ffmpeg.get_ffprobe_exe()
+# Configure ffmpeg path for pydub
+ffmpeg_path = ffmpeg.get_ffmpeg_exe()
+AudioSegment.converter = ffmpeg_path
+AudioSegment.ffmpeg = ffmpeg_path
+AudioSegment.ffprobe = ffmpeg_path 
 import nltk
 
 def text_to_speech(text, lang='en-uk', tld='co.uk', chunk_pause_ms=200):
