@@ -5,7 +5,11 @@ if "audioop" not in sys.modules:
     sys.modules["pyaudioop"] = dummy
 from gtts import gTTS
 import time
+import imageio_ffmpeg as ffmpeg
 from pydub import AudioSegment
+
+AudioSegment.converter = ffmpeg.get_ffmpeg_exe()
+AudioSegment.ffprobe = ffmpeg.get_ffprobe_exe()
 import nltk
 
 def text_to_speech(text, lang='en-uk', tld='co.uk', chunk_pause_ms=200):

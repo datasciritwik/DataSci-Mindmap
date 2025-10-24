@@ -4,3 +4,4 @@ nltk
 pydub
 soundfile
 numpy
+imageio-ffmpeg
