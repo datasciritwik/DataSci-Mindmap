@@ -16,15 +16,9 @@ st.set_page_config(
     initial_sidebar_state="collapsed"
 )
 
-st.markdown('## Interview Prep')
-
-
 # Initialize session state for TTS
 if "tts_text" not in st.session_state:
     st.session_state.tts_text = ""
-
-if "tts" not in st.session_state:
-    st.session_state.tts = get_melotts_model(language='EN', device='auto')
 
 # Load JSON data
 def load_json(file_path):
