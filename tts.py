@@ -1,5 +1,8 @@
-import sys, audioop
-sys.modules["pyaudioop"] = audioop
+import sys, types
+if "audioop" not in sys.modules:
+    dummy = types.ModuleType("audioop")
+    sys.modules["audioop"] = dummy
+    sys.modules["pyaudioop"] = dummy
 from gtts import gTTS
 import time
 from pydub import AudioSegment
