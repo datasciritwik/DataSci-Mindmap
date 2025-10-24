@@ -1,3 +1,18 @@
-streamlit
-gTTS
-melotts
+# Core app
+streamlit>=1.50.0
+rich>=14.0.0
+gTTS>=2.5.4  # optional; can remove if fully switching to MeloTTS
+
+# MeloTTS (from GitHub, working build)
+git+https://github.com/myshell-ai/MeloTTS.git
+
+# Dependencies for MeloTTS
+torch>=2.2.0
+torchaudio>=2.2.0
+numpy>=1.26.0
+soundfile>=0.12.1
+scipy>=1.11.0
+
+# Optional utilities
+pydub>=0.25.1     # if you plan to convert .wav to .mp3
+ffmpeg-python>=0.2.0  # required for audio conversion
