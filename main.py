@@ -118,3 +118,5 @@ html('''
 window.top.document.querySelectorAll(`[href*="streamlit.io"]`).forEach(e => e.setAttribute("style", "display: none;"));
 </script>
 ''')
+
+st.write(gTTS)
