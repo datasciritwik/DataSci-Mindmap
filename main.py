@@ -74,12 +74,10 @@ if os.path.exists(file_path):
                 text = re.sub(r'\s+', ' ', text).strip()
                 tts = gTTS(text=text, lang='en', slow=False)
 
-                speaker_ids = st.session_state.tts.hps.data.spk2id
 
                 # Save temporarily
                 output_path = f"{int(time.time())}.mpeg"
                 tts.save(output_path)
-                st.session_state.tts.tts_to_file(text, speaker_ids[accent], output_path)
                 # Create base64 for direct embedding
                 with open(output_path, "rb") as f:
                     audio_bytes = f.read()
