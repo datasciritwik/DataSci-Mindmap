@@ -7,7 +7,6 @@ import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 import time 
 import base64
-from melo.api import TTS
 
 # Set up the page
 st.set_page_config(
@@ -19,9 +18,6 @@ st.set_page_config(
 
 st.markdown('## Interview Prep')
 
-def get_melotts_model(language='EN', device='auto'):
-    model = TTS(language=language, device=device)
-    return model
 
 # Initialize session state for TTS
 if "tts_text" not in st.session_state:
@@ -82,13 +78,13 @@ if os.path.exists(file_path):
 
                 # 3. Remove extra whitespace/newlines
                 text = re.sub(r'\s+', ' ', text).strip()
-                # tts = gTTS(text=text, lang='en', slow=False)
+                tts = gTTS(text=text, lang='en', slow=False)
 
                 speaker_ids = st.session_state.tts.hps.data.spk2id
 
                 # Save temporarily
                 output_path = f"{int(time.time())}.mpeg"
-                # tts.save(output_path)
+                tts.save(output_path)
                 st.session_state.tts.tts_to_file(text, speaker_ids[accent], output_path)
                 # Create base64 for direct embedding
                 with open(output_path, "rb") as f:
