@@ -9,7 +9,7 @@ from pydub import AudioSegment
 import nltk
 
 def text_to_speech(text, lang='en-uk', tld='co.uk', chunk_pause_ms=200):
-    nltk.download('punkt', quiet=True)
+    nltk.download('punkt_tab', quiet=True)
     # 1. Split into sentences
     sentences = nltk.sent_tokenize(text)
     parts = []
