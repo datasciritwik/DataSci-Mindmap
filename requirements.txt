@@ -2,3 +2,5 @@ gTTS
 streamlit
 nltk
 pydub
+soundfile
+numpy
