@@ -1,12 +1,12 @@
 import streamlit as st
 import json
 import os, re
-from gtts import gTTS
 import tempfile
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 import time 
 import base64
+from tts import text_to_speech
 
 # Set up the page
 st.set_page_config(
@@ -72,12 +72,7 @@ if os.path.exists(file_path):
 
                 # 3. Remove extra whitespace/newlines
                 text = re.sub(r'\s+', ' ', text).strip()
-                tts = gTTS(text=text, lang='en', slow=False)
-
-
-                # Save temporarily
-                output_path = f"{int(time.time())}.mpeg"
-                tts.save(output_path)
+                tts = text_to_speech(text)
                 # Create base64 for direct embedding
                 with open(output_path, "rb") as f:
                     audio_bytes = f.read()

@@ -1,2 +1,4 @@
 gTTS
 streamlit
+nltk
+pydub
