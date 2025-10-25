@@ -5,6 +5,7 @@ import tempfile
 import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 import time 
+from gtts import gTTS
 import base64
 # from tts import text_to_speech
 
@@ -68,11 +69,14 @@ if os.path.exists(file_path):
             with st.spinner("Generating audio..."):
                 # Generate TTS
                 # 2. Remove markdown symbols (*, _, #, >, `, etc.)
-                text = re.sub(r'[*_#>\-`~\[\](){}>]+', ' ', text)
-
                 # 3. Remove extra whitespace/newlines
+                text = re.sub(r'[*_#>\-`~\[\](){}>]+', ' ', text)
                 text = re.sub(r'\s+', ' ', text).strip()
-                tts = text_to_speech(text)
+                output_path = f"{int(time.time())}.wav"
+
+
+                tts = gTTS(text)
+                tts.save(output)
                 # Create base64 for direct embedding
                 with open(output_path, "rb") as f:
                     audio_bytes = f.read()
