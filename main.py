@@ -76,7 +76,7 @@ if os.path.exists(file_path):
 
 
                 tts = gTTS(text)
-                tts.save(output)
+                tts.save(output_path)
                 # Create base64 for direct embedding
                 with open(output_path, "rb") as f:
                     audio_bytes = f.read()
