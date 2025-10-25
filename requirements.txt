@@ -1,7 +1,2 @@
 gTTS
 streamlit
-nltk
-pydub
-soundfile
-numpy
-imageio-ffmpeg

@@ -6,7 +6,7 @@ import streamlit.components.v1 as components
 from streamlit.components.v1 import html
 import time 
 import base64
-from tts import text_to_speech
+# from tts import text_to_speech
 
 # Set up the page
 st.set_page_config(
